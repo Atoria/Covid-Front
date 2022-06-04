@@ -53,6 +53,7 @@
               <b-form-input
                 id="register-input-password"
                 placeholder="Password"
+                type="password"
                 v-model.trim="$v.password.$model"
                 :state="errors.password && errors.password.length=== 0"
               ></b-form-input>
@@ -67,6 +68,7 @@
               <b-form-input
                 id="register-input-repeat-password"
                 placeholder="Repeat password"
+                type="password"
                 v-model.trim="$v.repeatPassword.$model"
                 :state="errors.repeatPassword && errors.repeatPassword.length=== 0"
               ></b-form-input>
