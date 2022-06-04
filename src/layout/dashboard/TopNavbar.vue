@@ -15,17 +15,18 @@
         <ul class="navbar-nav ml-auto">
 
           <drop-down class="nav-item"
-                     title="Lang"
+                     title="LANG"
                      title-classes="nav-link"
                      icon="ti-book">
-            <a class="dropdown-item" href="#">GE</a>
-            <a class="dropdown-item" href="#">EN</a>
+            <template v-for="lang of languages">
+              <a class="dropdown-item" @click="setLocale(lang)">{{ lang }}</a>
+            </template>
           </drop-down>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="ti-angle-right"></i>
               <p>
-                Logout
+                {{$t("logout")}}
               </p>
             </a>
           </li>
@@ -43,10 +44,14 @@ export default {
   },
   data() {
     return {
-      activeNotifications: false
+      activeNotifications: false,
+      languages: ['en', 'ge']
     };
   },
   methods: {
+    setLocale(lang){
+      this.$i18n.locale = lang;
+    },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },

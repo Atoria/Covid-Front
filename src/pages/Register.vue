@@ -3,16 +3,16 @@
 
     <div class="register-container">
 
-      <card class="card w-50" title="Register">
+      <card class="card w-50" :title="$t('register')">
         <div>
           <b-form>
             <b-form-group
-              label="Email address:"
+              :label="$t('emailAddress')"
               label-for="register-input-email"
             >
               <b-form-input
                 id="register-input-email"
-                placeholder="Enter email"
+                :placeholder="$t('emailAddress')"
                 v-model.trim="$v.email.$model"
                 :state="errors.email && errors.email.length === 0"
               ></b-form-input>
@@ -23,10 +23,10 @@
 
             </b-form-group>
 
-            <b-form-group label="Your Name:" label-for="register-input-name">
+            <b-form-group :label="$t('name')" label-for="register-input-name">
               <b-form-input
                 id="register-input-name"
-                placeholder="Name"
+                :placeholder="$t('name')"
                 v-model.trim="$v.name.$model"
                 :state="errors.name && errors.name.length=== 0"
               ></b-form-input>
@@ -36,10 +36,10 @@
 
             </b-form-group>
 
-            <b-form-group label="Your Surname:" label-for="register-input-surname">
+            <b-form-group :label="$t('surname')" label-for="register-input-surname">
               <b-form-input
                 id="register-input-surname"
-                placeholder="Surname"
+                :placeholder="$t('surname')"
                 v-model.trim="$v.surname.$model"
                 :state="errors.surname && errors.surname.length=== 0"
               ></b-form-input>
@@ -49,10 +49,10 @@
 
             </b-form-group>
 
-            <b-form-group label="Password:" label-for="register-input-password">
+            <b-form-group :label="$t('password')" label-for="register-input-password">
               <b-form-input
                 id="register-input-password"
-                placeholder="Password"
+                :placeholder="$t('password')"
                 type="password"
                 v-model.trim="$v.password.$model"
                 :state="errors.password && errors.password.length=== 0"
@@ -64,10 +64,10 @@
 
 
             </b-form-group>
-            <b-form-group label="Repeat password" label-for="register-input-repeat-password">
+            <b-form-group :label="$t('repeatPassword')" label-for="register-input-repeat-password">
               <b-form-input
                 id="register-input-repeat-password"
-                placeholder="Repeat password"
+                :placeholder="$t('repeatPassword')"
                 type="password"
                 v-model.trim="$v.repeatPassword.$model"
                 :state="errors.repeatPassword && errors.repeatPassword.length=== 0"
@@ -138,25 +138,25 @@ export default {
       };
 
       if (!this.$v.email.required) {
-        this.errors.email.push("Email is required")
+        this.errors.email.push(this.$t("errors.required.email"))
       }
       if (!this.$v.email.email) {
-        this.errors.email.push("Email should be valid")
+        this.errors.email.push(this.$t("errors.valid.email"))
       }
       if (!this.$v.name.required) {
-        this.errors.name.push("Name is required")
+        this.errors.name.push(this.$t("errors.required.name"))
       }
       if (!this.$v.surname.required) {
-        this.errors.surname.push("Surname is required")
+        this.errors.surname.push(this.$t("errors.required.surname"))
       }
       if (!this.$v.password.required) {
-        this.errors.password.push("Password is required")
+        this.errors.password.push(this.$t("errors.required.password"))
       }
       if (!this.$v.password.minLength) {
-        this.errors.password.push("Password min length is 6")
+        this.errors.password.push(this.$t("errors.minLength.password"))
       }
       if (!this.$v.repeatPassword.sameAs) {
-        this.errors.repeatPassword.push("Password does not match")
+        this.errors.repeatPassword.push(this.$t("errors.sameAs.repeatPassword"))
       }
 
     },

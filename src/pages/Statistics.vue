@@ -5,7 +5,7 @@
         <b-form-input type="text"></b-form-input>
 
         <b-input-group-append>
-          <b-button variant="outline-info">Search</b-button>
+          <b-button variant="outline-info">{{ $t("search") }}</b-button>
 
         </b-input-group-append>
       </b-input-group>
@@ -44,6 +44,7 @@
 export default {
   data() {
     return {
+
       report: {
         currentPage: 1,
         total: 0,
@@ -51,11 +52,11 @@ export default {
       },
       items: [],
       fields: [
-        {key: 'code', label: 'Code', sortable: true},
-        {key: 'name', label: 'Name', sortable: true},
-        {key: 'confirmed', label: 'Confirmed', sortable: true},
-        {key: 'recovered', label: 'Recovered', sortable: true},
-        {key: 'death', label: 'Death', sortable: true},
+        {key: 'code', label: this.$t('code'), sortable: true},
+        {key: 'name', label: this.$t('name'), sortable: true},
+        {key: 'confirmed', label: this.$t('confirmed'), sortable: true},
+        {key: 'recovered', label: this.$t('recovered'), sortable: true},
+        {key: 'death', label: this.$t('death'), sortable: true},
       ]
     }
   },
@@ -65,7 +66,7 @@ export default {
     },
     paginate(ctx) {
       console.log(ctx);
-    }
+    },
   }
 
 };

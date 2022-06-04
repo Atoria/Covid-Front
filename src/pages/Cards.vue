@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col-md-6 col-xl-3" v-for="stats in statsCards" :key="stats.title">
         <stats-card>
-          <div class="icon-big text-center"  slot="header">
-            {{ stats.country }}
+          <div class=" text-center"slot="header">
+            <h2>{{ stats.country }}</h2>
           </div>
           <div class="numbers" slot="content">
-            <p>Confirmed - {{stats.value}}</p>
-            <p>Recovered - {{stats.value}}</p>
-            <p>Death - {{stats.value}}</p>
+            <p>{{ $t("confirmed") }} - {{stats.value}}</p>
+            <p>{{ $t("recovered") }} - {{stats.value}}</p>
+            <p>{{ $t("death") }} - {{stats.value}}</p>
 
           </div>
         </stats-card>

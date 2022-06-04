@@ -10,13 +10,14 @@
                    title="Lang"
                    title-classes="nav-link"
                    icon="ti-book">
-          <a class="dropdown-item">EN</a>
-          <a class="dropdown-item">GE</a>
+          <template v-for="lang of languages" >
+            <a class="dropdown-item" @click="setLocale(lang)">{{ lang }}</a>
+          </template>
         </drop-down>
         <li class="nav-item">
           <a class="nav-link">
             <i class="ti-angle-right"></i>
-            <p>Logout</p>
+            <p>{{ $t("logout") }}</p>
           </a>
         </li>
         <li class="divider"></li>
@@ -40,6 +41,7 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu";
+
 export default {
   components: {
     TopNavbar,
@@ -47,7 +49,15 @@ export default {
     DashboardContent,
     MobileMenu
   },
+  data() {
+    return {
+      languages: ['en', 'ge']
+    }
+  },
   methods: {
+    setLocale(lang){
+      this.$i18n.locale = lang;
+    },
     toggleSidebar() {
       if (this.$sidebar.showSidebar) {
         this.$sidebar.displaySidebar(false);

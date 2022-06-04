@@ -1,0 +1,36 @@
+{
+  "register": "Register",
+  "code": "Code",
+  "name": "Name",
+  "confirmed": "Confirmed",
+  "recovered": "Recovered",
+  "death": "Death",
+  "search": "Search",
+  "logout": "Logout",
+  "lang": "Lang",
+  "statistics": "Statistics",
+  "cards": "Cards",
+  "login": "Login",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "surname": "Surname",
+  "repeatPassword": "Repeat Password",
+  "submit": "Submit",
+  "errors": {
+    "required": {
+      "email": "Email is required",
+      "name": "Name is required",
+      "surname": "Surname is required",
+      "password": "Password is required"
+    },
+    "minLength": {
+      "password": "Password min length is 6"
+    },
+    "sameAs": {
+      "repeatPassword": "Password does not match"
+    },
+    "valid": {
+      "email": "Email should be valid"
+    }
+  }
+}

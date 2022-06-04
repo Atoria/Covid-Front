@@ -3,16 +3,16 @@
 
     <div class="login-container">
 
-      <card class="card w-50" title="Login">
+      <card class="card w-50" :title="$t('login')">
         <div>
           <b-form>
             <b-form-group
-              label="Email address:"
+              :label="$t('emailAddress')"
               label-for="register-input-email"
             >
               <b-form-input
                 id="register-input-email"
-                placeholder="Enter email"
+                :placeholder="$t('emailAddress')"
                 v-model.trim="$v.email.$model"
                 :state="errors.email && errors.email.length === 0"
               ></b-form-input>
@@ -23,10 +23,11 @@
 
             </b-form-group>
 
-            <b-form-group label="Password:" label-for="register-input-password">
+            <b-form-group :label="$t('password')"
+                          label-for="register-input-password">
               <b-form-input
                 id="register-input-password"
-                placeholder="Password"
+                :placeholder="$t('password')"
                 v-model.trim="$v.password.$model"
                 type="password"
                 :state="errors.password && errors.password.length=== 0"
@@ -81,17 +82,16 @@ export default {
       };
 
       if (!this.$v.email.required) {
-        this.errors.email.push("Email is required")
+        this.errors.email.push(this.$t("errors.required.email"))
       }
       if (!this.$v.email.email) {
-        this.errors.email.push("Email should be valid")
+        this.errors.email.push(this.$t("errors.valid.email"))
       }
-
       if (!this.$v.password.required) {
-        this.errors.password.push("Password is required")
+        this.errors.password.push(this.$t("errors.required.password"))
       }
       if (!this.$v.password.minLength) {
-        this.errors.password.push("Password min length is 6")
+        this.errors.password.push(this.$t("errors.minLength.password"))
       }
     },
     login() {
