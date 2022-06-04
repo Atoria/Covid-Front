@@ -2,8 +2,8 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <sidebar-link to="/statistics" name="Statistics" icon="ti-panel"/>
-        <sidebar-link to="/cards" name="Cards" icon="ti-view-list-alt"/>
+        <sidebar-link to="/dashboard/statistics" name="Statistics" icon="ti-panel"/>
+        <sidebar-link to="/dashboard/cards" name="Cards" icon="ti-view-list-alt"/>
       </template>
       <mobile-menu>
         <drop-down class="nav-item"

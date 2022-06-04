@@ -1,10 +1,13 @@
 <template>
-  <h1>TODO AUTHORIZATION</h1>
+  <h1>TODO Login</h1>
 </template>
 
 <script>
 export default {
-  name: "Authorization"
+  name: "Login",
+  mounted() {
+    console.log(444);
+  }
 }
 </script>
 
