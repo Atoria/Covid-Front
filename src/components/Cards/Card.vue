@@ -5,7 +5,7 @@
     </div>
     <div class="card-header" v-if="$slots.header || title">
       <slot name="header">
-        <h4 class="card-title">{{title}}</h4>
+        <h4 class="card-title text-center">{{title}}</h4>
         <p class="card-category" v-if="subTitle">{{subTitle}}</p>
       </slot>
     </div>
