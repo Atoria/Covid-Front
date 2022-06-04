@@ -30,7 +30,7 @@
                 v-model.trim="$v.name.$model"
                 :state="errors.name && errors.name.length=== 0"
               ></b-form-input>
-              <b-form-invalid-feedback v-for="err of errors.name" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.name" :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
@@ -43,7 +43,7 @@
                 v-model.trim="$v.surname.$model"
                 :state="errors.surname && errors.surname.length=== 0"
               ></b-form-input>
-              <b-form-invalid-feedback v-for="err of errors.name" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.name" :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
@@ -58,7 +58,7 @@
                 :state="errors.password && errors.password.length=== 0"
               ></b-form-input>
 
-              <b-form-invalid-feedback v-for="err of errors.password" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.password"  :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
@@ -73,7 +73,7 @@
                 :state="errors.repeatPassword && errors.repeatPassword.length=== 0"
               ></b-form-input>
 
-              <b-form-invalid-feedback v-for="err of errors.repeatPassword" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.repeatPassword" :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
