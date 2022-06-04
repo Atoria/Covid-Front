@@ -17,7 +17,7 @@
                 :state="errors.email && errors.email.length === 0"
               ></b-form-input>
 
-              <b-form-invalid-feedback v-for="err of errors.email" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.email" :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
