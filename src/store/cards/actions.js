@@ -1,3 +1,5 @@
+import {StatsService} from "../../services/stats.service";
+
 const CARD_GET_DATA = async ({commit, state}, payload) => {
   let params = {
     limit: state.perPage,
@@ -5,9 +7,8 @@ const CARD_GET_DATA = async ({commit, state}, payload) => {
   }
   //TODO CALL SERVICE
 
-  commit('CARD_SET', ['data', listResponse.body.data])
-  commit('CARD_SET', ['total', listResponse.body.total])
-  commit('CARD_SET', ['currentPage', payload ? payload : 1])
+  const summary = await StatsService.getSummary()
+  commit('CARD_SET', ['data', summary.body.data])
 }
 
 
