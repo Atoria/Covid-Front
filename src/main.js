@@ -9,6 +9,8 @@ import i18n from "./i18n";
 import store from "./store/index";
 import Toasted from 'vue-toasted';
 import VueResource from 'vue-resource'
+import "./filters"
+
 
 Vue.use(VueResource)
 Vue.use(PaperDashboard);
@@ -20,9 +22,8 @@ Vue.use(Toasted, {
 })
 
 
-
 Vue.http.interceptors.push((request, next) => {
-  if(sessionStorage.getItem('token')){
+  if (sessionStorage.getItem('token')) {
     request.headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
   }
   request.headers.set('Accept', 'application/json')

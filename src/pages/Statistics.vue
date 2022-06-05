@@ -1,7 +1,6 @@
 <template>
   <div>
     <b-card>
-      {{ searchInput }}
       <b-input-group>
         <b-form-input v-model="searchInput" type="text"></b-form-input>
 
@@ -23,6 +22,11 @@
         show-empty
         small
       >
+
+        <template #cell(name)="data">
+          {{data.item.name | translate}}
+        </template>
+
       </b-table>
 
 

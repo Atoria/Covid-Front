@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      languages: ['en', 'ge']
+      languages: ['en', 'ka']
     }
   },
   methods: {

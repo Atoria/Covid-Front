@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       activeNotifications: false,
-      languages: ['en', 'ge']
+      languages: ['en', 'ka']
     };
   },
   methods: {
