@@ -68,40 +68,6 @@ export default {
   },
   data() {
     return {
-      statsCards: [
-        {
-          type: "warning",
-          country: "USA",
-          title: "Capacity",
-          value: "105GB",
-          footerText: "Updated now",
-          footerIcon: "ti-reload"
-        },
-        {
-          type: "success",
-          country: "USA",
-          title: "Revenue",
-          value: "$1,345",
-          footerText: "Last day",
-          footerIcon: "ti-calendar"
-        },
-        {
-          type: "danger",
-          country: "USA",
-          title: "Errors",
-          value: "23",
-          footerText: "In the last hour",
-          footerIcon: "ti-timer"
-        },
-        {
-          type: "info",
-          country: "USA",
-          title: "Followers",
-          value: "+45",
-          footerText: "Updated now",
-          footerIcon: "ti-reload"
-        }
-      ],
     };
   },
   computed: {
@@ -114,7 +80,6 @@ export default {
     ...mapActions({
       getCards: "CARD_GET_DATA"
     }),
-
   },
   beforeMount() {
     this.getCards();

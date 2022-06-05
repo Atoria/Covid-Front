@@ -1,13 +1,23 @@
+import {StatsService} from "../../services/stats.service";
+
 const STATISTICS_GET_DATA = async ({commit, state}, payload) => {
   let params = {
-    limit: state.perPage,
-    offset: payload ? (payload - 1) * state.perPage : 0
+    limit: state.pagination.perPage,
+    offset: (state.pagination.currentPage - 1) * state.pagination.perPage,
+    search: state.search,
+    column: state.column,
+    order: state.order
   }
-  //TODO CALL SERVICE
+  const summary = await StatsService.getStats(params)
 
-  commit('STATISTICS_SET', ['data', listResponse.body.data])
-  commit('STATISTICS_SET', ['total', listResponse.body.total])
-  commit('STATISTICS_SET', ['currentPage', payload ? payload : 1])
+  let pagination = state.pagination;
+  pagination = {
+    ...pagination,
+    total: summary.body.data.total,
+  }
+
+  commit('STATISTICS_SET', ['data', summary.body.data.data])
+  commit('STATISTICS_SET', ['pagination', pagination])
 }
 
 

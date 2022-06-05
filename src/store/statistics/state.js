@@ -1,6 +1,11 @@
 export const state = {
-  total: 0,
   data: [],
-  currentPage: 1,
-  perPage: 10,
+  pagination: {
+    total: 0,
+    currentPage: 1,
+    perPage: 10,
+  },
+  column: 'code',
+  order: 'desc',
+  search: null
 }

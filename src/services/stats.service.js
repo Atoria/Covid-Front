@@ -6,7 +6,7 @@ import {AppSettings} from "../appSettings";
 export class StatsService{
 
   static getStats(params) {
-    return Vue.http.get(AppSettings.getUrl() + '/api/stats', params);
+    return Vue.http.get(AppSettings.getUrl() + '/api/stats', {params});
   }
 
   static getSummary() {
