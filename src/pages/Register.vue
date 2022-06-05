@@ -58,7 +58,7 @@
                 :state="errors.password && errors.password.length=== 0"
               ></b-form-input>
 
-              <b-form-invalid-feedback v-for="err of errors.password"  :key="err" id="register-input-email">
+              <b-form-invalid-feedback v-for="err of errors.password" :key="err" id="register-input-email">
                 {{ err }}
               </b-form-invalid-feedback>
 
@@ -94,6 +94,7 @@
 
 <script>
 import {required, sameAs, minLength, email} from 'vuelidate/lib/validators'
+import {AuthService} from "../services/auth.service";
 
 export default {
   name: "Register",
@@ -165,7 +166,22 @@ export default {
       if (this.$v.$invalid) {
         this.setErrorMessages();
       } else {
-        //TODO SUBMIT REQUEST
+        let params = {
+          first_name: this.$v.name.$model,
+          last_name: this.$v.surname.$model,
+          email: this.$v.email.$model,
+          password: this.$v.password.$model,
+          password_confirmation: this.$v.repeatPassword.$model,
+        }
+
+        AuthService.register(params).then((response) => {
+          if (response.body.success) {
+            sessionStorage.setItem('token', response.body.token)
+            this.$router.push({name: 'statistics'})
+          } else {
+            this.$toasted.error("Could not register user")
+          }
+        })
       }
     }
   }

@@ -1,3 +1,4 @@
+import router from "./index";
 const DashboardLayout = () => import("@/layout/dashboard/DashboardLayout.vue")
 const Content = () => import("@/layout/dashboard/Content.vue")
 
@@ -15,22 +16,25 @@ const routes = [
     path: "/",
     redirect: "/login",
     component: Content,
+    beforeEnter: (to, from, next) => {
+      if(sessionStorage.getItem('token')){
+        router.push({name: 'statistics'})
+      }else{
+        next();
+      }
+    },
     children: [
       {
         path: "login",
         name: "login",
         component: Login,
-        beforeEnter: (to, from, next) => {
-          next();//todo check on tokens
-        }
+
       },
       {
         path: "register",
         name: "register",
         component: Register,
-        beforeEnter: (to, from, next) => {
-          next();//todo check on tokens
-        }
+
       }
     ]
   },
@@ -38,22 +42,23 @@ const routes = [
     path: "/dashboard",
     component: DashboardLayout,
     redirect: "/statistics",
+    beforeEnter: (to, from, next) => {
+      if(!sessionStorage.getItem('token')){
+        router.push({name: 'login'})
+      }else{
+        next();
+      }
+    },
     children: [
       {
         path: "statistics",
         name: "statistics",
         component: Statistics,
-        beforeEnter: (to, from, next) => {
-          next();//todo check on tokens
-        }
       },
       {
         path: "cards",
         name: "cards",
         component: Cards,
-        beforeEnter: (to, from, next) => {
-          next();//todo check on tokens
-        }
       }
     ]
   },

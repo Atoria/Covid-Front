@@ -53,6 +53,7 @@
 
 <script>
 import {email, minLength, required, sameAs} from "vuelidate/lib/validators";
+import {AuthService} from "../services/auth.service";
 
 export default {
   name: "Login",
@@ -99,7 +100,19 @@ export default {
       if (this.$v.$invalid) {
         this.setErrorMessages();
       } else {
-        //TODO SUBMIT REQUEST
+        let params = {
+          email: this.$v.email.$model,
+          password: this.$v.password.$model,
+        }
+
+        AuthService.login(params).then((response) => {
+          if (response.body.success) {
+            sessionStorage.setItem('token', response.body.token)
+            this.$router.push({name: 'statistics'})
+          } else {
+            this.$toasted.error("Username or password is incorrect")
+          }
+        })
       }
     }
   }
