@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="ti-angle-right"></i>
-              <p>
+              <p @click="logout()">
                 {{$t("logout")}}
               </p>
             </a>
@@ -35,6 +35,8 @@
     </div></nav>
 </template>
 <script>
+import router from "../../router";
+
 export default {
   computed: {
     routeName() {
@@ -66,6 +68,12 @@ export default {
     },
     hideSidebar() {
       this.$sidebar.displaySidebar(false);
+    },
+    logout(){
+      if(sessionStorage.getItem('token')){
+        sessionStorage.removeItem('token')
+      }
+      this.$router.push({name: 'login'})
     }
   }
 };

@@ -17,7 +17,7 @@
         <li class="nav-item">
           <a class="nav-link">
             <i class="ti-angle-right"></i>
-            <p>{{ $t("logout") }}</p>
+            <p @click="logout()">{{ $t("logout") }}</p>
           </a>
         </li>
         <li class="divider"></li>
@@ -41,6 +41,7 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu";
+import router from "../../router";
 
 export default {
   components: {
@@ -62,6 +63,12 @@ export default {
       if (this.$sidebar.showSidebar) {
         this.$sidebar.displaySidebar(false);
       }
+    },
+    logout(){
+      if(sessionStorage.getItem('token')){
+        sessionStorage.removeItem('token')
+      }
+      this.$router.push({name: 'login'})
     }
   }
 };

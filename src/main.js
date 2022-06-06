@@ -30,9 +30,15 @@ Vue.http.interceptors.push((request, next) => {
 
   next(function (response) {
     if (response.status === 401) {
+      if(sessionStorage.getItem('token')){
+        sessionStorage.removeItem('token')
+      }
       router.push({name: 'login'})
       Vue.toasted.error('Unauthorized')
     } else if (response.status === 403) {
+      if(sessionStorage.getItem('token')){
+        sessionStorage.removeItem('token')
+      }
       router.push({name: 'login'})
       Vue.toasted.error('Forbidden')
     }
